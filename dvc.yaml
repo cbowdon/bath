@@ -1,0 +1,21 @@
+stages:
+      
+  fetch-raw-traffic-data:
+    foreach:
+      - rawcount
+      - countpoints
+    do:
+      cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/${item}/local_authority_id/dft_${item}_local_authority_id_115.csv' -o data/traffic/${item}.csv
+      outs:
+        - data/traffic/${item}.csv
+        
+  fetch-geodata:
+    foreach:
+      - banes_boundary_review_2018_final_wards_simp.geojson
+      - os_roads.geojson
+      - os_boundary.geojson
+    do:
+      cmd: curl 'https://raw.githubusercontent.com/BathHacked/banes-geographic-data/master/${item}' -o data/traffic/${item}
+      outs:
+        - data/traffic/${item}
+    

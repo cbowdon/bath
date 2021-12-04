@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  fetch-raw-traffic-data:
+    cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/rawcount/local_authority_id/dft_rawcount_local_authority_id_115.csv'
+      -o data/traffic/raw-counts.csv
+    outs:
+    - path: data/traffic/raw-counts.csv
+      md5: 7538e94fc6c811163b65ff542574543f
+      size: 2288643
+  fetch-raw-traffic-data@dft_countpoints_local_authority_id_115.csv:
+    cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/rawcount/local_authority_id/dft_countpoints_local_authority_id_115.csv'
+      -o data/traffic/dft_countpoints_local_authority_id_115.csv
+    outs:
+    - path: data/traffic/dft_countpoints_local_authority_id_115.csv
+      md5: a0c1cb8328c87192fe81eff06a553d06
+      size: 270
+  fetch-raw-traffic-data@dft_rawcount_local_authority_id_115.csv:
+    cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/rawcount/local_authority_id/dft_rawcount_local_authority_id_115.csv'
+      -o data/traffic/dft_rawcount_local_authority_id_115.csv
+    outs:
+    - path: data/traffic/dft_rawcount_local_authority_id_115.csv
+      md5: 7538e94fc6c811163b65ff542574543f
+      size: 2288643
+  fetch-raw-traffic-data@rawcount:
+    cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/rawcount/local_authority_id/dft_rawcount_local_authority_id_115.csv'
+      -o data/traffic/rawcount.csv
+    outs:
+    - path: data/traffic/rawcount.csv
+      md5: 7538e94fc6c811163b65ff542574543f
+      size: 2288643
+  fetch-raw-traffic-data@countpoints:
+    cmd: curl 'https://storage.googleapis.com/dft-statistics/road-traffic/downloads/countpoints/local_authority_id/dft_countpoints_local_authority_id_115.csv'
+      -o data/traffic/countpoints.csv
+    outs:
+    - path: data/traffic/countpoints.csv
+      md5: 83239b54a49063457fe1d4669ca0e402
+      size: 19587
+  fetch-geodata@os_roads.geojson:
+    cmd: curl 'https://raw.githubusercontent.com/BathHacked/banes-geographic-data/master/os_roads.geojson'
+      -o data/traffic/os_roads.geojson
+    outs:
+    - path: data/traffic/os_roads.geojson
+      md5: 1d33357d91669cda24c6bfd5a9a10c27
+      size: 3908390
+  fetch-geodata@os_boundary.geojson:
+    cmd: curl 'https://raw.githubusercontent.com/BathHacked/banes-geographic-data/master/os_boundary.geojson'
+      -o data/traffic/os_boundary.geojson
+    outs:
+    - path: data/traffic/os_boundary.geojson
+      md5: f0c47fb169bd499524bf1e7ac83ea3c4
+      size: 357826
+  fetch-geodata@banes_boundary_review_2018_final_wards_simp.geojson:
+    cmd: curl 'https://raw.githubusercontent.com/BathHacked/banes-geographic-data/master/banes_boundary_review_2018_final_wards_simp.geojson'
+      -o data/traffic/banes_boundary_review_2018_final_wards_simp.geojson
+    outs:
+    - path: data/traffic/banes_boundary_review_2018_final_wards_simp.geojson
+      md5: 1a832ee9e6a07f429bbf97cebc516963
+      size: 537350
